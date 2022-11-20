@@ -1,0 +1,31 @@
+$phone: 770px;
+$tablet: 1024x;
+$laptop: 1366px;
+$desktop: 1920px;
+
+// @content rule
+// -> placeholder for media queries added along the line when wanting to use mixins
+
+@mixin phone {
+  @media only screen and (max-width: $phone) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (min-width: ($phone+ 1px)) and (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media only screen and (min-width: ($tablet+ 1px)) and (max-width: $laptop) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: ($laptop + 1px)) {
+    @content;
+  }
+}

@@ -1,0 +1,530 @@
+// media queries
+$phone: 770px;
+$tablet: 1024px;
+$laptop: 1560px;
+$desktop: 1920px;
+
+// @content rule
+// -> placeholder for media queries added along the line when wanting to use mixins
+
+@mixin phone {
+  @media only screen and (max-width: $phone) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (min-width: ($phone + 1px)) and (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media only screen and (min-width: ($tablet + 1px)) and (max-width: $laptop) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: ($laptop + 1px)) {
+    @content;
+  }
+}
+
+// styling variables
+$text-color: whitesmoke;
+$text-size-subheader: 10px;
+$main-background-colour: whitesmoke;
+$main-font-size: 16px;
+$section-background-colour: rgb(164, 128, 98);
+
+/* SCSS HEX */
+$almond: #ede0d4ff;
+$desert-sand: #e6ccb2ff;
+$burlywood: #ddb892ff;
+$cafe-au-lait: #b08968ff;
+$coffee: #7f5539ff;
+$brown-sugar: #9c6644ff;
+
+* {
+  font-family: "Exo", sans-serif;
+  background-color: $main-background-colour;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// nav menu
+.nav {
+  width: 100%;
+  position: fixed;
+  background-color: $main-background-colour;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
+
+  @include laptop {
+    overflow: visible;
+    width: 100vw;
+    display: flex;
+    justify-content: right;
+  }
+
+  & a {
+    text-decoration: none;
+  }
+
+  & ul {
+    list-style: none;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include laptop {
+      flex-direction: row;
+    }
+
+    & li {
+      font-size: 16px;
+
+      @include laptop {
+        font-size: 18px;
+        padding: 0px 20px;
+      }
+    }
+  }
+
+  &__menu a {
+    display: block;
+    padding: 10px;
+    color: $brown-sugar;
+  }
+
+  &__menu a:hover {
+    background-color: $main-background-colour;
+  }
+}
+
+// .header {
+//   width: 100vw;
+//   // height: 100vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   margin: 5px 10px;
+//   color: $coffee;
+
+//   &__title {
+//     font-size: 20px;
+
+//     @include laptop {
+//       font-size: 40px;
+//     }
+//   }
+// }
+
+// .nav {
+//   &__menu {
+//     display: flex;
+//     justify-content: space-between;
+//     flex-direction: row;
+
+//     @include laptop {
+//       flex-direction: column;
+//     }
+
+//     &--list {
+//       margin: 15px;
+//     }
+//   }
+// }
+
+// .nav {
+//   width: 100%;
+//   height: 100%;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   align-items: center;
+//   margin: 5px 10px;
+//   color: $coffee;
+
+//   &__ul {
+//     text-align: right;
+//   }
+// }
+
+// .nav__ul {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-evenly;
+
+//   flex-wrap: wrap;
+// }
+
+// .nav__li {
+//   list-style: none;
+//   font-size: 10px;
+// }
+
+// menu icon
+
+@include phone {
+  .hamb {
+    cursor: pointer;
+    float: right;
+    padding: 24px 20px;
+
+    &--line {
+      background: $brown-sugar;
+      display: block;
+      height: 2px;
+      position: relative;
+      width: 24px;
+    }
+    &--line::before {
+      top: 5px;
+    }
+
+    &--line::after {
+      top: -5px;
+    }
+  }
+}
+
+@include tablet {
+  .hamb {
+    cursor: pointer;
+    float: right;
+    padding: 25px 25px;
+
+    &--line {
+      background: $brown-sugar;
+      display: block;
+      height: 3px;
+      position: relative;
+      width: 26px;
+    }
+    &--line::before {
+      top: 10px;
+    }
+
+    &--line::after {
+      top: -10px;
+    }
+  }
+}
+
+@include phone {
+  .hamb--line::before,
+  .hamb--line::after {
+    background: $brown-sugar;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all 0.2s ease-out;
+    width: 100%;
+  }
+}
+
+@include tablet {
+  .hamb--line::before,
+  .hamb--line::after {
+    background: $brown-sugar;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all 0.2s ease-out;
+    width: 100%;
+  }
+}
+
+// header
+
+.header {
+  width: 100%;
+  height: 100%;
+  background-color: $main-background-colour;
+  position: sticky;
+  top: 0;
+
+  @include laptop {
+    display: flex;
+  }
+
+  &__title {
+    display: inline-block;
+    color: $brown-sugar;
+    font-size: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+
+    @include tablet {
+      font-size: 35px;
+    }
+
+    @include laptop {
+      font-size: 35px;
+      padding-left: 10px;
+    }
+  }
+}
+
+@include phone {
+  .side-menu {
+    &:checked ~ nav {
+      max-height: 100%;
+    }
+
+    &:checked ~ .hamb .hamb--line {
+      background: transparent;
+
+      &::before {
+        transform: rotate(-45deg);
+        top: 0;
+      }
+
+      &::after {
+        transform: rotate(45deg);
+        top: 0;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .side-menu {
+    &:checked ~ nav {
+      max-height: 100%;
+    }
+
+    &:checked ~ .hamb .hamb--line {
+      background: transparent;
+
+      &::before {
+        transform: rotate(-45deg);
+        top: 0;
+      }
+
+      &::after {
+        transform: rotate(45deg);
+        top: 0;
+      }
+    }
+  }
+}
+
+// landing header style
+
+.landing {
+  width: 100%;
+  min-height: 100vh;
+  color: $coffee;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &__header {
+    margin-top: -200px;
+    font-size: 24px;
+
+    @include laptop {
+      font-size: 35px;
+    }
+  }
+  &__subheader {
+    text-align: center;
+    font-size: 16px;
+
+    @include laptop {
+      font-size: 22px;
+    }
+  }
+}
+
+// about section
+
+.about {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $section-background-colour;
+
+  &__content {
+    background-color: $section-background-colour;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+
+    @include laptop {
+      margin-top: 125px;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__img {
+    width: 50%;
+    height: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 50%;
+    border-radius: 50%;
+
+    @include laptop {
+      width: 25%;
+      height: 25%;
+      display: inline-flex;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  &__text {
+    background-color: $section-background-colour;
+    padding: 20px;
+    color: $text-color;
+    padding-top: 40px;
+
+    &--title {
+      padding-top: 50px;
+      font-size: 24px;
+
+      @include laptop {
+        font-size: 32px;
+      }
+    }
+
+    &--desc {
+      margin-left: 50px;
+      font-size: 20px;
+    }
+  }
+}
+
+// skills section
+
+.skills {
+  width: 100%;
+  height: 100vh;
+
+  &__text {
+    padding: 20px;
+    padding-top: 40px;
+    color: $coffee;
+
+    &--title {
+      font-size: 24px;
+
+      @include laptop {
+        font-size: 32px;
+      }
+    }
+  }
+  &__img {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+
+    &--logo {
+      width: 50%;
+      height: 50%;
+      flex: 50%;
+      padding: 20px;
+
+      @include tablet {
+        width: 33.3%;
+        height: 33.3%;
+        flex: 33.3%;
+      }
+
+      @include laptop {
+        width: 20%;
+        height: 20%;
+        flex: 20%;
+      }
+    }
+  }
+}
+
+// project section
+
+.projects {
+  width: 100%;
+  height: 100vh;
+  &__header {
+    color: $brown-sugar;
+  }
+}
+
+// professional background section
+
+.prof-background {
+  width: 100%;
+  height: 100vh;
+  background-color: $section-background-colour;
+
+  &__header {
+    background-color: $section-background-colour;
+    padding: 20px;
+    font-size: 24px;
+    color: $text-color;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      justify-content: center;
+    }
+
+    @include laptop {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &--title {
+      padding: 20px;
+      background-color: $section-background-colour;
+      color: $text-color;
+
+      @include laptop {
+        width: 100vw;
+        height: 100vh;
+      }
+    }
+
+    &--subheader {
+      font-size: 18px;
+      background-color: $section-background-colour;
+      color: $text-color;
+      margin-bottom: 10px;
+    }
+
+    &--text {
+      font-size: 16px;
+      color: $text-color;
+      background-color: $section-background-colour;
+    }
+  }
+}
+
+// contact section - phone
+
+.contact {
+  width: 100%;
+  height: 50vh;
+}

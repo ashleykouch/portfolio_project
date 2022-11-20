@@ -1,0 +1,92 @@
+/* SCSS HEX */
+/* SCSS HSL */
+/* SCSS RGB */
+/* SCSS Gradient */
+* {
+  font-family: "Exo", sans-serif;
+  background-color: whitesmoke;
+  margin: 0;
+}
+
+.nav {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 10px;
+  color: rgb(127, 85, 57);
+}
+.nav__ul {
+  text-align: right;
+}
+
+.nav__ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.nav__li {
+  list-style: none;
+  font-size: 10px;
+}
+
+.landing {
+  width: 100vw;
+  height: 100vh;
+  color: rgb(127, 85, 57);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+}
+.landing__center {
+  margin-top: -100px;
+}
+.landing__header {
+  text-transform: lowercase;
+}
+.landing__subheader {
+  margin-top: 5px;
+}
+
+.about {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(156, 102, 68);
+  padding: 10px;
+  color: whitesmoke;
+}
+.about__text {
+  background-color: rgb(156, 102, 68);
+  padding: 10px;
+}
+
+.contact {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(156, 102, 68);
+  color: whitesmoke;
+}
+
+.skills {
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+  color: rgb(127, 85, 57);
+  margin: 10px;
+}
+.skills__img {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.skills__img--logo {
+  width: 50px;
+  height: 50px;
+}
